@@ -6,19 +6,15 @@ class Food{
     }
 
     getFoodStock(){
-        db.ref('/').on("value", (data)=>{
+        db.ref('/').on("value", function(data){
             foodStock = data.val();
         });
     }
 
     updateFoodStock(count){
-        db.ref('/').update({
+        db.ref("/").update({
             Food: count
         });
-    }
-
-    deductFood(){
-
     }
 
     display(){
