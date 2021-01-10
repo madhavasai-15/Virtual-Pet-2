@@ -40,6 +40,7 @@ function draw() {
     lastFed = data.val();
   });
 
+
   foodObj.display();
 
   drawSprites();
@@ -67,12 +68,11 @@ function feedDog(){
 }
 
 function addFoods(){
-  foodS++;
+  foodObj.foodStock++;
   db.ref('/').update({
-    Food: foodS
+    Food: foodObj.foodStock
   });
 }
-
 
 function readStock(data){
   foodS = data.val();
