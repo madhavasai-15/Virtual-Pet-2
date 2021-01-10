@@ -21,7 +21,7 @@ function setup() {
   foodStock = db.ref("Food");
   foodStock.on("value", readStock);
 
-  foodObj = new Food(foodStock, lastFed);
+  foodObj = new Food();
 
   feed = createButton("feed");
   feed.position(700, 80);
@@ -57,9 +57,11 @@ function draw() {
 function feedDog(){
   dog.addImage(happydogImage);
 
-  foodS--;
+  foodObj.updateFoodStock(foodObj.getFoodStock()-1);
+
+
   db.ref('/').update({
-    Food: foodS,
+    Food: foodObj.getFoodStock(),
     FeedTime: hour()
   });
 }
